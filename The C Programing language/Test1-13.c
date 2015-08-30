@@ -23,7 +23,7 @@ void main()
 	nc = 0;               //单词中含有的字符数
 	ovflow = 0;           //单词中含有的字符数，大于最大单词长度
 
-    for (i = 0; i < Maxword; ++i)  //
+    for (i = 0; i < Maxword; ++i)  
 		wl[i] = 0;                 //初始化每个单词长度为0
 	
 	while ((c = getchar()) != EOF) //从键盘获取字符串，并判断是否输入结束
@@ -47,28 +47,28 @@ void main()
 		else
 			++nc;                               //在单词内加一个字符长度
 	}
-	maxvalue = 0;                               //
-	for (i = 1; i < Maxword;++i)                //
-		if (wl[i] > maxvalue)                   //
-		    maxvalue = wl[i];                   //
-	for (i = 1; i < Maxword; ++i)               //
+	maxvalue = 0;                               //给maxvalue赋值
+	for (i = 1; i < Maxword;++i)                //循环10次
+		if (wl[i] > maxvalue)                   //判断maxvalue的最大值
+		    maxvalue = wl[i];                   //将wl中最大值赋给maxvalue
+	for (i = 1; i < Maxword; ++i)               //循环10次
 	{
-		printf("%5d-%5d:", i, wl[i]);        //
-		if (wl[i] > 0)                          //
+		printf("%5d-%5d:", i, wl[i]);           
+		if (wl[i] > 0)                          //判断各长度单词
 		{
-			if ((len = wl[i] * Maxhist / maxvalue) <= 0)//
-				len = 1;                        //
+			if ((len = wl[i] * Maxhist / maxvalue) <= 0)//计算len的值，判断直方条的长度
+				len = 1;                        //避免len<1时带来的错误
 		}
 		else 
-			len = 0;                            //
+			len = 0;                            //直方图无长度
 
-		while (len > 0)                         //
+		while (len > 0)                         //当有len有值输出
 		{  
-	        putchar('*');                       //
-			--len;                              // 
+	        putchar('*');                       //输出一个‘*’
+			--len;                              //减一个len值
 	    }
-		 putchar('\n');                         //
+		 putchar('\n');                         
 	}
-	if (ovflow > 0)                             //
-		printf("There are %d words >= %d\n", ovflow, Maxword);//
+	if (ovflow > 0)                             //判断是否有单词长度超过Maxword
+		printf("There are %d words >= %d\n", ovflow, Maxword);
 }
